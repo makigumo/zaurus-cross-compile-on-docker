@@ -1,7 +1,7 @@
 FROM centos:7
 
 # Install from YUM
-RUN yum install -y wget perl libX11.i686 libXext.i686 libzip.i686
+RUN yum install -y wget perl libX11.i686 libXext.i686 libzip.i686 qt3-devel qt3-linguist
 
 # Add zaurus user
 RUN useradd zaurus
@@ -49,7 +49,7 @@ WORKDIR /home/zaurus
 RUN tar zxf packages/tmake-1.8.tar.gz
 
 # Environment
-RUN echo "export PATH=$PATH:$HOME/tmake-1.8/bin:/opt/Embedix/tools/bin:/opt/Embedix/tools/arm-linux/bin" > .bashrc
+RUN echo "export PATH=$PATH:$HOME/tmake-1.8/bin:/opt/Embedix/tools/bin:/opt/Embedix/tools/arm-linux/bin:/usr/lib64/qt-3.3/bin" > .bashrc
 RUN echo "export CC=arm-linux-gcc" >> .bashrc
 RUN echo "export CXX=arm-linux-g++" >> .bashrc
 RUN echo "export AR=arm-linux-ar" >> .bashrc
