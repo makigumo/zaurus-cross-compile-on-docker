@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:7
 
 # Install from YUM
 RUN yum install -y wget perl libX11.i686 libXext.i686 libzip.i686
@@ -14,13 +14,13 @@ COPY packages/tmake-1.8.tar.gz /home/zaurus/packages
 COPY packages/ipkg-build /usr/local/bin
 
 # Download cross compile packages
-RUN wget http://support.ezaurus.com/developer/tool/tools/gcc-cross-sa1100-2.95.2-0.i386.rpm
-RUN wget http://support.ezaurus.com/developer/tool/tools/glibc-arm-2.2.2-0.i386.rpm
-RUN wget http://support.ezaurus.com/developer/tool/tools/linux-headers-arm-sa1100-2.4.6-3.i386.rpm
-RUN wget http://support.ezaurus.com/developer/tool/tools/binutils-cross-arm-2.11.2-0.i386.rpm
-RUN wget http://support.ezaurus.com/developer/tool/tools/tmake-sharp.tar.gz
-RUN wget http://support.ezaurus.com/developer/doc/reference/20021227/sharpsdk-pub-20021227.tar.gz
-RUN wget http://support.ezaurus.com/developer/doc/reference/20030108/libqte.so.2.3.2.gz
+COPY downloads/tool/tools/gcc-cross-sa1100-2.95.2-0.i386.rpm .
+COPY downloads/tool/tools/glibc-arm-2.2.2-0.i386.rpm .
+COPY downloads/tool/tools/linux-headers-arm-sa1100-2.4.6-3.i386.rpm .
+COPY downloads/tool/tools/binutils-cross-arm-2.11.2-0.i386.rpm .
+COPY downloads/tool/tools/tmake-sharp.tar.gz .
+COPY downloads/doc/reference/20021227/sharpsdk-pub-20021227.tar.gz .
+COPY downloads/doc/reference/20030108/libqte.so.2.3.2.gz .
 
 # Install RPM
 RUN rpm -i gcc-cross-sa1100-2.95.2-0.i386.rpm
